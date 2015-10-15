@@ -22,8 +22,9 @@ foreach( $image_files as $format => $files ){
 }
 
 // Get the colors for each image
+$pw_colors = new PW_Colors();
 for( $i=0; $i<count($images); $i++ ){
-	$images[$i]['color_meta'] = pw_get_image_color_meta( array(
+	$images[$i]['color_meta'] = $pw_colors->get_image_color_meta( array(
 		'image_path' 	=> $images[$i]['path'],
 		'image_format' 	=> $images[$i]['format'],
 		'number' 		=> 4,
