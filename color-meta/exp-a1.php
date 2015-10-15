@@ -27,9 +27,19 @@ for( $i=0; $i<count($images); $i++ ){
 	$images[$i]['color_meta'] = $pw_colors->get_image_color_meta( array(
 		'image_path' 	=> $images[$i]['path'],
 		'image_format' 	=> $images[$i]['format'],
-		'number' 		=> 4,
+		'number' 		=> 6,
 		'order_by'		=> 'lightness',
 		'order'			=> 'DESC',
+		
+		'processing'	=>	array(
+			'lightness_range' => array(
+				'low' => 0.33,
+				'high' => 0.66,
+				'distribute' => true,
+				'order' => 'DESC',
+				),
+			),
+
 		));
 }
 
