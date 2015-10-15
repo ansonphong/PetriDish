@@ -3,6 +3,16 @@
 use League\ColorExtractor\Client as ColorExtractor;
 
 /**
+ * @todo Structure this whole thing as a CLASS.
+ */
+
+class PW_Colors{
+
+	
+
+}
+
+/**
  * Uses PHP League's ColorExtractor class to
  * Select the most used colors from an image.
  */
@@ -51,10 +61,16 @@ function pw_get_image_color_meta( $vars ){
 		'order_by'		=> 'default',	// [string] Ordering methods, default|lightness
 		'order'			=> 'DESC',		// [string] DESC|ASC
 
-		// Fields generated at the per color level
+		/**
+		 * Fields generated at the per color level.
+		 * @todo Impliment.
+		 */
 		'color_fields'	=> array( 'hex', 'rgb', 'hsl', 'tags' ),
 		
-		// Fields generated for the entire color set
+		/**
+		 * Fields generated for the entire color set.
+		 * @todo Impliment.
+		 */
 		'image_fields'	=> array( 'colors', 'averages', 'tags' ),
 
 		// Color Processing
@@ -152,7 +168,6 @@ function pw_get_image_color_meta( $vars ){
 		$colors[] = $color;
 	}
 
-
 	/**
 	 * ORDER BY : Volume
 	 * ORDER : ASC (ascending)
@@ -167,26 +182,20 @@ function pw_get_image_color_meta( $vars ){
 	if( $vars['order_by'] == 'lightness' ){
 		//$colors = array_reverse($colors);
 		$colors = pw_array_order_by( $colors, 'lightness', SORT_DESC );
-
 		if( $vars['order'] == 'ASC' )
 			$colors = array_reverse($colors);
-
 	}
 
-	/**
-	 * @todo If $no_hsl, unset all HSL values
-	 */
-	//if( isset( $no_hsl ) && $no_hsl == true ){}
 	
 	/**
 	 * @todo Impliment additional options here, as extra functions:
-	 * @todo Add option to ensure color contrast between lightest and darkest color
 	 * @todo Add field to add 'tags', like 'dark', 'green', etc.
 	 * 
 	 */
 
 	/**
 	 * IMAGE TAGS
+	 * @see pw_image_color_meta_generate_
 	 */
 	$image_tags = array();
 
@@ -194,11 +203,6 @@ function pw_get_image_color_meta( $vars ){
 	 * IMAGE AVERAGES
 	 */
 	$image_averages = array();
-
-
-
-
-
 
 
 	return array(
